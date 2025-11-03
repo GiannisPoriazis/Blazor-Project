@@ -1,0 +1,23 @@
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Net.Http;
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+
+// configure OIDC
+builder.Services.AddOidcAuthentication(options =>
+{
+    // use configuration from wwwroot/appsettings.json
+    builder.Configuration.Bind("Oidc", options.ProviderOptions);
+});
+
+// HttpClient for calls to the API that will include tokens
+builder.Services.AddHttpClient("api", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("api"));
+
+await builder.Build().RunAsync();

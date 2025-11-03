@@ -1,0 +1,75 @@
+﻿using BlazorApp.Interfaces;
+using BlazorApp.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace BlazorApp.Services
+{
+    public class CustomerService : ICustomerService
+    {
+        private readonly BlazorAppContext _context;
+        private readonly AutoMapper.IMapper _mapper;
+
+        public CustomerService(BlazorAppContext context, AutoMapper.IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<(int total, List<Customer> customers)> GetCustomersAsync(int page = 1, int pageSize = 10)
+        {
+            var total = await _context.Customers.CountAsync();
+            var customers = await _context.Customers
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (total, customers);
+        }
+
+        public async Task<Customer?> GetByIdAsync(string id)
+        {
+            return await _context.Customers.FindAsync(id);
+        }
+
+        public async Task<Customer> CreateAsync(CustomerDto dto)
+        {
+            var customer = _mapper.Map<Customer>(dto);
+
+            string id;
+
+            do
+            {
+                id = GenerateID();
+            }
+            while (await _context.Customers.AnyAsync(p => p.Id == id));
+
+            customer.Id = id;
+
+            _context.Customers.Add(customer);
+            await _context.SaveChangesAsync();
+            return customer;
+        }
+
+        public async Task UpdateAsync(Customer customer)
+        {
+            _context.Entry(customer).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<DeleteResult> DeleteAsync(string id)
+        {
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null) return DeleteResult.NotFound;
+
+            _context.Customers.Remove(customer);
+
+            await _context.SaveChangesAsync();
+            return DeleteResult.Deleted;
+        }
+
+        private static string GenerateID()
+        {
+            return Guid.NewGuid().ToString("N").ToUpper();
+        }
+    }
+}

@@ -1,0 +1,18 @@
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using System;
+using System.Net.Http;
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<BlazorApp.Client.App>("#app");
+
+// configure OIDC (binds to wwwroot/appsettings.json Oidc section)
+builder.Services.AddOidcAuthentication(options =>
+{
+    builder.Configuration.Bind("Oidc", options.ProviderOptions);
+});
+
+// Basic HttpClient - components can request IAccessTokenProvider and set Authorization header manually if needed
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+await builder.Build().RunAsync();

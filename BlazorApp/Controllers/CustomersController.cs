@@ -1,0 +1,64 @@
+﻿using BlazorApp.Interfaces;
+using BlazorApp.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BlazorApp.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CustomersController : ControllerBase
+    {
+        private readonly ICustomerService _service;
+
+        public CustomersController(ICustomerService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCustomers(int page = 1, int pageSize = 10)
+        {
+            var (total, customers) = await _service.GetCustomersAsync(page, pageSize);
+            var result = new PagedResult<Customer>
+            {
+                Total = total,
+                Customers = customers
+            };
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Customer>> GetCustomer(string id)
+        {
+            var customer = await _service.GetByIdAsync(id);
+            return customer == null ? NotFound() : customer;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCustomer(CustomerDto customer)
+        {
+            var createdCustomer = await _service.CreateAsync(customer);
+            return CreatedAtAction(nameof(GetCustomer), new { id = createdCustomer.Id }, createdCustomer);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateCustomer(Customer customer)
+        {
+            var updated = await _service.UpdateAsync(customer);
+            return updated ? NoContent() : NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCustomer(string id)
+        {
+            var result = await _service.DeleteAsync(id);
+
+            return result switch
+            {
+                DeleteResult.NotFound => NotFound(),
+                DeleteResult.Deleted => NoContent(),
+                _ => StatusCode(500)
+            };
+        }
+    }
+}

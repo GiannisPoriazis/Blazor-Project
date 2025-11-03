@@ -1,0 +1,53 @@
+using BlazorApp.Models;
+using BlazorApp.Utilities;
+using Xunit;
+
+namespace BlazorApp.IntegrationTests
+{
+    public class EmployeeManagerToolsTests
+    {
+        [Fact]
+        public void PrintName_WithEmployee_WritesName()
+        {
+            var employee = new Employee { Name = "Alice" };
+            using var sw = new StringWriter();
+
+            var originalOut = Console.Out;
+            try
+            {
+                Console.SetOut(sw);
+                EmployeeManagerTools.PrintName(employee);
+            }
+            finally
+            {
+                Console.SetOut(originalOut);
+            }
+
+            sw.Flush();
+            var output = sw.ToString();
+            Assert.Contains("Alice", output);
+        }
+
+        [Fact]
+        public void PrintName_WithManager_WritesName()
+        {
+            var manager = new Manager { Name = "Bob" };
+            using var sw = new StringWriter();
+
+            var originalOut = Console.Out;
+            try
+            {
+                Console.SetOut(sw);
+                EmployeeManagerTools.PrintName(manager);
+            }
+            finally
+            {
+                Console.SetOut(originalOut);
+            }
+
+            sw.Flush();
+            var output = sw.ToString();
+            Assert.Contains("Bob", output);
+        }
+    }
+}

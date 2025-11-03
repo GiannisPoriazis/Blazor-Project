@@ -1,0 +1,270 @@
+﻿@page "/"
+@rendermode InteractiveAuto
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using BlazorApp.Models
+
+@if (selectedCustomer == null)
+{
+    <h3 class="mb-3">Customers</h3>
+}
+else
+{
+    <h3 class="mb-3">Edit Customer</h3>
+}
+
+@if (!string.IsNullOrEmpty(statusMessage))
+{
+    <div class="alert alert-info">@statusMessage</div>
+}
+
+@if (selectedCustomer != null)
+{
+    <EditForm FormName="customerForm" Model="selectedCustomer" OnValidSubmit="SaveEdit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Company Name" @bind-Value="selectedCustomer.CompanyName" />
+        </div>
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Contact Name" @bind-Value="selectedCustomer.ContactName" />
+        </div>
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Address" @bind-Value="selectedCustomer.Address" />
+            <span class="input-group-text" id="City"><i class="fa-solid fa-city"></i></span>
+            <InputText type="text" class="form-control" placeholder="City" aria-label="City" @bind-Value="selectedCustomer.City" />
+        </div>
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Region" @bind-Value="selectedCustomer.Region" />
+        </div>
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Postal Code" @bind-Value="selectedCustomer.PostalCode" />
+        </div>
+
+        <div class="input-group mb-3">
+            <InputText class="form-control" placeholder="Country" @bind-Value="selectedCustomer.Country" />
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="Phone"><i class="fa-solid fa-phone"></i></span>
+            <InputText type="text" class="form-control" placeholder="Phone" aria-label="Phone" @bind-Value="selectedCustomer.Phone" />
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="btn btn-success" type="submit" disabled="@isSaving">Save</button>
+            <button class="btn btn-secondary" type="button" @onclick="CancelEdit" disabled="@isSaving">Cancel</button>
+        </div>
+    </EditForm>
+
+    <hr />
+}
+
+@if (pagedResult is null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (selectedCustomer == null)
+{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Postal Code</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in pagedResult.Customers)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.CompanyName</td>
+                    <td>@c.ContactName</td>
+                    <td>@c.Address</td>
+                    <td>@c.City</td>
+                    <td>@c.Region</td>
+                    <td>@c.PostalCode</td>
+                    <td>@c.Country</td>
+                    <td>@c.Phone</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteAction(c.Id)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                        <button class="btn btn-primary btn-sm" @onclick="() => StartEdit(c.Id)">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(!CanGoPrevious)">Previous</button>
+
+        <span>Page @currentPage of @totalPages</span>
+
+        <button class="btn btn-secondary" @onclick="NextPage" disabled="@(!CanGoNext)">Next</button>
+    </div>
+}
+
+@code {
+    private PagedResult<Customer>? pagedResult;
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalPages;
+
+    private string? statusMessage;
+    private string? deletingId;
+
+    private Customer? selectedCustomer;
+    private bool isSaving;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPage();
+    }
+
+    private async Task LoadPage()
+    {
+        var result = await Http.GetFromJsonAsync<PagedResult<Customer>>($"api/customers?page={currentPage}&pageSize={pageSize}");
+        pagedResult = result;
+
+        if (pagedResult != null)
+            totalPages = (int)Math.Ceiling((double)pagedResult.Total / pageSize);
+    }
+
+    private bool CanGoPrevious => currentPage > 1;
+    private bool CanGoNext => currentPage < totalPages;
+
+    private async Task NextPage()
+    {
+        if (CanGoNext)
+        {
+            currentPage++;
+            await LoadPage();
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (CanGoPrevious)
+        {
+            currentPage--;
+            await LoadPage();
+        }
+    }
+
+    private async Task DeleteAction(string id)
+    {
+        var confirmed = await JS.InvokeAsync<bool>("confirm", $"You are about to delete customer: {id}. Are you sure?");
+        if (!confirmed) return;
+
+        deletingId = id;
+        statusMessage = null;
+
+        try
+        {
+            var response = await Http.DeleteAsync($"api/customers/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                statusMessage = "Customer deleted.";
+                await LoadPage();
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                statusMessage = "Customer not found.";
+                await LoadPage();
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                statusMessage = $"Error: {response.StatusCode} - {content}";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = ex.Message;
+        }
+        finally
+        {
+            deletingId = null;
+        }
+    }
+
+    private async Task StartEdit(string id)
+    {
+        statusMessage = null;
+
+        try
+        {
+            var customer = await Http.GetFromJsonAsync<Customer>($"api/customers/{id}");
+
+            if (customer == null)
+            {
+                statusMessage = "Customer not found.";
+                return;
+            }
+
+            selectedCustomer = customer;
+        }
+        catch (Exception ex)
+        {
+            statusMessage = ex.Message;
+        }
+    }
+
+    private void CancelEdit()
+    {
+        selectedCustomer = null;
+    }
+
+    private async Task SaveEdit()
+    {
+        if (selectedCustomer == null)
+        {
+            return;
+        }
+
+        isSaving = true;
+        statusMessage = null;
+
+        try
+        {
+            var response = await Http.PutAsJsonAsync("api/customers", selectedCustomer);
+
+            if (response.IsSuccessStatusCode)
+            {
+                statusMessage = "Customer updated.";
+                selectedCustomer = null;
+                await LoadPage();
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                statusMessage = $"Error: {response.StatusCode} - {content}";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = ex.Message;
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+}

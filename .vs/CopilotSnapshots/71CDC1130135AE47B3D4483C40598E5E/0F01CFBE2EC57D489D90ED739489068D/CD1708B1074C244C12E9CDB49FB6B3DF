@@ -1,0 +1,19 @@
+﻿using BlazorApp.Models;
+
+namespace BlazorApp.Interfaces
+{
+    public enum DeleteResult
+    {
+        Deleted,
+        NotFound
+    }
+
+    public interface ICustomerService
+    {
+        Task<(int total, List<Customer> customers)> GetCustomersAsync(int page = 1, int pageSize = 10);
+        Task<Customer?> GetByIdAsync(string id);
+        Task<Customer> CreateAsync(CustomerDto dto);
+        Task UpdateAsync(Customer customer);
+        Task<DeleteResult> DeleteAsync(string id);
+    }
+}

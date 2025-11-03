@@ -1,0 +1,77 @@
+﻿@page "/addCustomer"
+@rendermode InteractiveAuto
+@inject HttpClient Http
+@using BlazorApp.Models
+
+<h3 class="mb-3">Add Customer</h3>
+
+<EditForm FormName="customerForm" Model="newCustomer" OnValidSubmit="CreateCustomer">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Company Name" @bind-Value="newCustomer.CompanyName" />
+    </div>
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Contact Name" @bind-Value="newCustomer.ContactName" />
+    </div>
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Address" @bind-Value="newCustomer.Address" />
+        <span class="input-group-text" id="City"><i class="fa-solid fa-city"></i></span>
+        <InputText type="text" class="form-control" placeholder="City" aria-label="City" @bind-Value="newCustomer.City" />
+    </div>
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Region" @bind-Value="newCustomer.Region" />
+    </div>
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Postal Code" @bind-Value="newCustomer.PostalCode" />
+    </div>
+
+    <div class="input-group mb-3">
+        <InputText class="form-control" placeholder="Country" @bind-Value="newCustomer.Country" />
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="Phone"><i class="fa-solid fa-phone"></i></span>
+        <InputText type="text" class="form-control" placeholder="Phone" aria-label="Phone" @bind-Value="newCustomer.Phone" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Create</button>
+
+    @if (!string.IsNullOrEmpty(statusMessage))
+    {
+        <div class="mt-2">@statusMessage</div>
+    }
+</EditForm>
+
+@code {
+    private CustomerDto newCustomer = new();
+    private string? statusMessage;
+
+    private async Task CreateCustomer()
+    {
+        statusMessage = null;
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/customers", newCustomer);
+            if (response.IsSuccessStatusCode)
+            {
+                statusMessage = "Customer created.";
+                newCustomer = new CustomerDto();
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                statusMessage = $"Error: {response.StatusCode} - {content}";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = ex.Message;
+        }
+    }
+}

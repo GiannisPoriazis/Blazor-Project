@@ -1,0 +1,81 @@
+﻿using System.Net;
+using System.Net.Http.Json;
+using BlazorApp.Models;
+using FluentAssertions;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Xunit;
+
+namespace BlazorApp.Tests;
+
+public class CustomerTests : IClassFixture<CustomWebApplicationFactory<Program>>
+{
+    private readonly CustomWebApplicationFactory<Program> _factory;
+    private readonly HttpClient _httpClient;
+
+    public CustomerTests(CustomWebApplicationFactory<Program> factory)
+    {
+        _factory = factory;
+        _httpClient = factory.CreateClient(new WebApplicationFactoryClientOptions
+        {
+            AllowAutoRedirect = false
+        });
+    }
+
+    [Fact]
+    public async Task GetCustomers_ReturnsPagedResult_WithSeededCustomers()
+    {
+        var response = await _httpClient.GetAsync("/api/customers");
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        var result = await response.Content.ReadFromJsonAsync<PagedResult<Customer>>();
+        result.Should().NotBeNull();
+        result!.Customers.Should().HaveCountGreaterOrEqualTo(2);
+    }
+
+    [Fact]
+    public async Task GetCustomerById_ReturnsCustomer_WhenExists()
+    {
+        var response = await _httpClient.GetAsync("/api/customers/CUST001");
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var customer = await response.Content.ReadFromJsonAsync<Customer>();
+        customer.Should().NotBeNull();
+        customer!.Id.Should().Be("CUST001");
+    }
+
+    [Fact]
+    public async Task DeleteCustomer_RemovesCustomer()
+    {
+        // delete existing
+        var del = await _httpClient.DeleteAsync("/api/customers/CUST002");
+        del.StatusCode.Should().Be(HttpStatusCode.NoContent);
+
+        // now getting it should return 404
+        var get = await _httpClient.GetAsync("/api/customers/CUST002");
+        get.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task CreateCustomer_CreatesNewCustomer()
+    {
+        var dto = new CustomerDto
+        {
+            CompanyName = "NewCo",
+            ContactName = "Zed",
+            Address = "3 Third St",
+            City = "NewCity",
+            Region = "NewRegion",
+            PostalCode = "11111",
+            Country = "NewCountry",
+            Phone = "555-0300"
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("/api/customers", dto);
+        response.StatusCode.Should().Be(HttpStatusCode.Created);
+
+        var created = await response.Content.ReadFromJsonAsync<Customer>();
+        created.Should().NotBeNull();
+        created!.CompanyName.Should().Be(dto.CompanyName);
+    }
+}

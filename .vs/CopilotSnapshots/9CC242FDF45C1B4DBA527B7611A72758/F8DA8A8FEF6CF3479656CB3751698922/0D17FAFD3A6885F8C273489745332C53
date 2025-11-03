@@ -1,0 +1,148 @@
+﻿@page "/deleteCustomer"
+@rendermode InteractiveAuto
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using BlazorApp.Models
+
+<h3>Delete Customer</h3>
+
+@if (!string.IsNullOrEmpty(statusMessage))
+{
+    <div class="alert alert-info">@statusMessage</div>
+}
+
+@if (pagedResult is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Postal Code</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var c in pagedResult.Customers)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.CompanyName</td>
+                <td>@c.ContactName</td>
+                <td>@c.Address</td>
+                <td>@c.City</td>
+                <td>@c.Region</td>
+                <td>@c.PostalCode</td>
+                <td>@c.Country</td>
+                <td>@c.Phone</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteCustomer(c.Id)" disabled="@(deletingId == c.Id)">
+                        @(deletingId == c.Id ? "Deleting..." : "Delete")
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(!CanGoPrevious)">Previous</button>
+
+        <span>Page @currentPage of @totalPages</span>
+
+        <button class="btn btn-secondary" @onclick="NextPage" disabled="@(!CanGoNext)">Next</button>
+    </div>
+}
+
+@code {
+    private PagedResult<Customer>? pagedResult;
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalPages;
+
+    private string? statusMessage;
+    private string? deletingId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPage();
+    }
+
+    private async Task LoadPage()
+    {
+        var result = await Http.GetFromJsonAsync<PagedResult<Customer>>($"api/customers?page={currentPage}&pageSize={pageSize}");
+        pagedResult = result;
+
+        if (pagedResult != null)
+            totalPages = (int)Math.Ceiling((double)pagedResult.Total / pageSize);
+    }
+
+    private bool CanGoPrevious => currentPage > 1;
+    private bool CanGoNext => currentPage < totalPages;
+
+    private async Task NextPage()
+    {
+        if (CanGoNext)
+        {
+            currentPage++;
+            await LoadPage();
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (CanGoPrevious)
+        {
+            currentPage--;
+            await LoadPage();
+        }
+    }
+
+    private async Task DeleteCustomer(string id)
+    {
+        // confirm with the user
+        var confirmed = await JS.InvokeAsync<bool>("confirm", $"Delete customer {id}? This cannot be undone.");
+        if (!confirmed) return;
+
+        deletingId = id;
+        statusMessage = null;
+        try
+        {
+            var response = await Http.DeleteAsync($"api/customers/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                statusMessage = "Customer deleted.";
+                // reload current page to refresh list
+                await LoadPage();
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                statusMessage = "Customer not found.";
+                await LoadPage();
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                statusMessage = $"Error: {response.StatusCode} - {content}";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = ex.Message;
+        }
+        finally
+        {
+            deletingId = null;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+﻿using BlazorApp.Models;
+
+namespace BlazorApp.Tests
+{
+    public class Seeding
+    {
+        public static void InitializeTestDB(BlazorAppContext db)
+        {
+            if (db.Customers.Any()) return;
+
+            db.Customers.AddRange(GetCustomers());
+            db.SaveChanges();
+        }
+
+        private static List<Customer> GetCustomers()
+        {
+            return new List<Customer>()
+            {
+                new Customer
+                {
+                    Id = "CUST001",
+                    CompanyName = "Acme Corp",
+                    ContactName = "Alice",
+                    Address = "1 Main St",
+                    City = "Metropolis",
+                    Region = "State",
+                    PostalCode = "12345",
+                    Country = "Wonderland",
+                    Phone = "555-0100"
+                },
+                new Customer
+                {
+                    Id = "CUST002",
+                    CompanyName = "Globex",
+                    ContactName = "Bob",
+                    Address = "2 Second St",
+                    City = "Gotham",
+                    Region = "Region",
+                    PostalCode = "67890",
+                    Country = "Utopia",
+                    Phone = "555-0200"
+                }
+            };
+        }
+    }
+}

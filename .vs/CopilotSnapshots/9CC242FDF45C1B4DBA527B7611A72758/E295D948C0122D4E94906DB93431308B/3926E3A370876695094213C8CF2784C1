@@ -1,0 +1,21 @@
+﻿using BlazorApp.Models;
+
+namespace BlazorApp.Tests
+{
+    public class Seeding
+    {
+        public static void InitializeTestDB(BlazorAppContext db)
+        {
+            db.Customers.AddRange(GetCustomers());
+            db.SaveChanges();
+        }
+
+        private static List<Customer> GetCustomers()
+        {
+            return new List<Customer>()
+            {
+
+            };
+        }
+    }
+}

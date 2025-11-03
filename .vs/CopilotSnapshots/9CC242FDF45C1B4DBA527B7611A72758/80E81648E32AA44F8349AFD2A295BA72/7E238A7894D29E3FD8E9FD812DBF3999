@@ -1,0 +1,58 @@
+﻿using Duende.IdentityServer.Models;
+
+namespace IdentityServer;
+
+public static class Config
+{
+    public static IEnumerable<ApiScope> ApiScopes =>
+        new ApiScope[]
+        {
+            new ApiScope(name: "blazorAppApi", displayName: "BlazorApp API")
+        };
+
+    public static IEnumerable<IdentityResource> IdentityResources =>
+        new IdentityResource[]
+        {
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile()
+        };
+
+    public static IEnumerable<Client> Clients =>
+        new Client[]
+        {
+            // machine-to-machine client
+            new Client
+            {
+                ClientId = "client",
+
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+
+                AllowedScopes = { "blazorAppApi" }
+            },
+
+            // SPA client for interactive browser login (Authorization Code + PKCE)
+            new Client
+            {
+                ClientId = "blazor_spa",
+                ClientName = "Blazor SPA",
+
+                AllowedGrantTypes = GrantTypes.Code,
+                RequirePkce = true,
+                RequireClientSecret = false,
+
+                RedirectUris = { "https://localhost:6001/authentication/login-callback" },
+                PostLogoutRedirectUris = { "https://localhost:6001/" },
+                AllowedCorsOrigins = { "https://localhost:6001" },
+
+                AllowedScopes = { "openid", "profile", "blazorAppApi" },
+
+                // allow access tokens to be returned to the browser (for APIs)
+                AllowAccessTokensViaBrowser = true
+            }
+        };
+}

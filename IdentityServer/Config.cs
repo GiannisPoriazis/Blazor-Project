@@ -1,0 +1,30 @@
+using Duende.IdentityServer.Models;
+
+namespace IdentityServer;
+
+public static class Config
+{
+    public static IEnumerable<ApiScope> ApiScopes =>
+        new ApiScope[]
+        {
+            new ApiScope(name: "blazorAppApi", displayName: "BlazorApp API")
+        };
+
+    public static IEnumerable<Client> Clients =>
+        new Client[]
+        {
+            new Client
+            {
+                ClientId = "client",
+
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+
+                AllowedScopes = { "blazorAppApi" }
+            }
+        };
+}

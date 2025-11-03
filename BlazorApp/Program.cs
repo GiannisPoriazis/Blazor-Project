@@ -1,18 +1,40 @@
+using AutoMapper;
+using BlazorApp;
 using BlazorApp.Components;
-using BlazorApp.Data;
+using BlazorApp.Interfaces;
+using BlazorApp.Services;
+using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri(sp.GetRequiredService<NavigationManager>().BaseUri)
+});
+
+builder.Services.AddDbContext<BlazorAppContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var mappingConfig = new MapperConfiguration(mc =>
+{
+    mc.AddMaps(typeof(BlazorApp.Mapping.CustomerProfile).Assembly);
+});
+
+IMapper mapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(mappingConfig);
+builder.Services.AddSingleton(mapper);
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
@@ -20,18 +42,19 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(BlazorApp.Client._Imports).Assembly);
 
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseAntiforgery();
+app.MapControllers();
 app.Run();
+
+public partial class Program { }
