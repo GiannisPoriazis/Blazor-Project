@@ -5,6 +5,7 @@ using BlazorApp.Interfaces;
 using BlazorApp.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +13,19 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddScoped(sp => new HttpClient
+builder.Services.AddHttpClient();
+builder.Services.AddScoped(sp =>
 {
-    BaseAddress = new Uri(sp.GetRequiredService<NavigationManager>().BaseUri)
+    var nav = sp.GetService<NavigationManager>();
+    if (nav != null)
+    {
+        return new HttpClient { BaseAddress = new Uri(nav.BaseUri) };
+    }
+
+    var factory = sp.GetService<IHttpClientFactory>();
+    var client = factory?.CreateClient() ?? new HttpClient();
+    client.BaseAddress ??= new Uri(builder.Configuration["BaseAddress"] ?? "https://localhost/");
+    return client;
 });
 
 builder.Services.AddDbContext<BlazorAppContext>(options =>

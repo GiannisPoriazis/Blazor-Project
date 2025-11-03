@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D05644D7-D16D-4110-95D0-CCEF18B7AA39}|BlazorApp.Client\\BlazorApp.Client.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D05644D7-D16D-4110-95D0-CCEF18B7AA39}|BlazorApp.Client\\BlazorApp.Client.csproj|solutionrelative:blazorapp.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp.tests\\customertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|solutionrelative:blazorapp.tests\\customertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\utilities\\employeemanagertools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\utilities\\employeemanagertools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp.tests\\employeemanagertoolstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|solutionrelative:blazorapp.tests\\employeemanagertoolstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +31,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorApp.Utilities\\EmployeeManagerTools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp.tests\\customertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|solutionrelative:blazorapp.tests\\customertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\interfaces\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\interfaces\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp\\utilities\\employeemanagertools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DA700EB-3F13-4FD0-9217-FD2D41E34CA0}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\utilities\\employeemanagertools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AB9CB9E-E4CE-4C89-B592-EC34E932EB0F}|BlazorApp.Tests\\BlazorApp.Tests.csproj|c:\\users\\giann\\source\\repos\\blazorproject\\blazor-project\\blazorapp.tests\\seeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,33 +78,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmployeeManagerToolsTests.cs",
-              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
-              "RelativeDocumentMoniker": "BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
-              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
-              "RelativeToolTip": "BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Client\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorApp.Client\\Program.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Client\\Program.cs",
+              "RelativeToolTip": "BlazorApp.Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:52:06.121Z",
+              "WhenOpened": "2025-11-03T11:26:39.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EmployeeManagerTools.cs",
-              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Utilities\\EmployeeManagerTools.cs",
-              "RelativeDocumentMoniker": "BlazorApp.Utilities\\EmployeeManagerTools.cs",
-              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Utilities\\EmployeeManagerTools.cs",
-              "RelativeToolTip": "BlazorApp.Utilities\\EmployeeManagerTools.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorApp\\Program.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Program.cs",
+              "RelativeToolTip": "BlazorApp\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAwBMAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:52:00.288Z",
+              "WhenOpened": "2025-11-03T11:21:03.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "CustomersController.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Controllers\\CustomersController.cs",
               "RelativeDocumentMoniker": "BlazorApp\\Controllers\\CustomersController.cs",
@@ -104,18 +112,42 @@
               "RelativeToolTip": "BlazorApp\\Controllers\\CustomersController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:51:54.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:51:54.372Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "EmployeeManagerTools.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Utilities\\EmployeeManagerTools.cs",
+              "RelativeDocumentMoniker": "BlazorApp\\Utilities\\EmployeeManagerTools.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Utilities\\EmployeeManagerTools.cs",
+              "RelativeToolTip": "BlazorApp\\Utilities\\EmployeeManagerTools.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T10:46:28.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeManagerTools.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Utilities\\EmployeeManagerTools.cs",
+              "RelativeDocumentMoniker": "BlazorApp.Utilities\\EmployeeManagerTools.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Utilities\\EmployeeManagerTools.cs",
+              "RelativeToolTip": "BlazorApp.Utilities\\EmployeeManagerTools.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T10:52:00.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Services\\CustomerService.cs",
               "RelativeDocumentMoniker": "BlazorApp\\Services\\CustomerService.cs",
               "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Services\\CustomerService.cs",
               "RelativeToolTip": "BlazorApp\\Services\\CustomerService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAA1wDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T10:51:45.238Z",
               "EditorCaption": ""
@@ -123,6 +155,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "CustomerTests.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\CustomerTests.cs",
+              "RelativeDocumentMoniker": "BlazorApp.Tests\\CustomerTests.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\CustomerTests.cs",
+              "RelativeToolTip": "BlazorApp.Tests\\CustomerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T10:25:58.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeeManagerToolsTests.cs",
+              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
+              "RelativeDocumentMoniker": "BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
+              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
+              "RelativeToolTip": "BlazorApp.Tests\\EmployeeManagerToolsTests.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T10:52:06.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ICustomerService.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Interfaces\\ICustomerService.cs",
               "RelativeDocumentMoniker": "BlazorApp\\Interfaces\\ICustomerService.cs",
@@ -130,38 +188,11 @@
               "RelativeToolTip": "BlazorApp\\Interfaces\\ICustomerService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:51:34.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:51:34.964Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmployeeManagerTools.cs",
-              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Utilities\\EmployeeManagerTools.cs",
-              "RelativeDocumentMoniker": "BlazorApp\\Utilities\\EmployeeManagerTools.cs",
-              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp\\Utilities\\EmployeeManagerTools.cs",
-              "RelativeToolTip": "BlazorApp\\Utilities\\EmployeeManagerTools.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:46:28.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CustomerTests.cs",
-              "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\CustomerTests.cs",
-              "RelativeDocumentMoniker": "BlazorApp.Tests\\CustomerTests.cs",
-              "ToolTip": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\CustomerTests.cs",
-              "RelativeToolTip": "BlazorApp.Tests\\CustomerTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:25:58.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Seeding.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\Seeding.cs",
               "RelativeDocumentMoniker": "BlazorApp.Tests\\Seeding.cs",
@@ -169,12 +200,11 @@
               "RelativeToolTip": "BlazorApp.Tests\\Seeding.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:23:47.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:23:47.134Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "CustomWebApplicationFactory.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Tests\\CustomWebApplicationFactory.cs",
               "RelativeDocumentMoniker": "BlazorApp.Tests\\CustomWebApplicationFactory.cs",
@@ -182,12 +212,11 @@
               "RelativeToolTip": "BlazorApp.Tests\\CustomWebApplicationFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:21:37.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:21:37.671Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "CustomersControllerTests.cs",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\tests\\BlazorApp.Api.Tests\\CustomersControllerTests.cs",
               "RelativeDocumentMoniker": "tests\\BlazorApp.Api.Tests\\CustomersControllerTests.cs",
@@ -195,12 +224,11 @@
               "RelativeToolTip": "tests\\BlazorApp.Api.Tests\\CustomersControllerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T10:11:54.715Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:11:54.715Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "BlazorApp.Api.Tests.csproj",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\tests\\BlazorApp.Api.Tests\\BlazorApp.Api.Tests.csproj",
               "RelativeDocumentMoniker": "tests\\BlazorApp.Api.Tests\\BlazorApp.Api.Tests.csproj",
@@ -208,12 +236,11 @@
               "RelativeToolTip": "tests\\BlazorApp.Api.Tests\\BlazorApp.Api.Tests.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-03T10:11:46.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T10:11:46.985Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AddCustomer.razor",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Client\\Pages\\AddCustomer.razor",
               "RelativeDocumentMoniker": "BlazorApp.Client\\Pages\\AddCustomer.razor",
@@ -221,12 +248,11 @@
               "RelativeToolTip": "BlazorApp.Client\\Pages\\AddCustomer.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T09:55:36.343Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T09:55:36.343Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\giann\\source\\repos\\BlazorProject\\Blazor-Project\\BlazorApp.Client\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "BlazorApp.Client\\Pages\\Home.razor",
@@ -234,8 +260,7 @@
               "RelativeToolTip": "BlazorApp.Client\\Pages\\Home.razor",
               "ViewState": "AgIAAAEBAAAAAAAAAAAAAA0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-01T12:42:33.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T12:42:33.896Z"
             }
           ]
         },

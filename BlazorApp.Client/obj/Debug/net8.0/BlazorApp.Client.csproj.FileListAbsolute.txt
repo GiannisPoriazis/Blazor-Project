@@ -1040,6 +1040,6 @@ C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\bin\De
 C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\webcil\BlazorApp.Shared.wasm
 C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\4vunzfikvp-pw175c19p1.gz
 C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\5zvbazqpur-b237fbjla7.gz
-C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\p16r1lo9cc-xt8fpn75j0.gz
-C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\m9lwyok78y-8dihcufd7s.gz
-C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\63dvynpkij-q60psoqgk8.gz
+C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\p16r1lo9cc-wtfxmxn81r.gz
+C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\m9lwyok78y-91y6a7bv6d.gz
+C:\Users\giann\source\repos\BlazorProject\Blazor-Project\BlazorApp.Client\obj\Debug\net8.0\compressed\63dvynpkij-mzl9smdia0.gz

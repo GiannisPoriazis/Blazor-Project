@@ -19,6 +19,7 @@ namespace BlazorApp.Services
         {
             var total = await _context.Customers.CountAsync();
             var customers = await _context.Customers
+                .AsNoTracking()
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -28,7 +29,7 @@ namespace BlazorApp.Services
 
         public async Task<Customer?> GetByIdAsync(string id)
         {
-            return await _context.Customers.FindAsync(id);
+            return await _context.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<Customer> CreateAsync(CustomerDto dto)
@@ -52,7 +53,7 @@ namespace BlazorApp.Services
 
         public async Task<bool> UpdateAsync(Customer customer)
         {
-            var existing = await _context.Customers.FindAsync(customer.Id);
+            var existing = await _context.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.Id == customer.Id);
             if (existing == null) return false;
 
             _context.Entry(customer).State = EntityState.Modified;
